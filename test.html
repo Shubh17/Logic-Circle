@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script>
-		for(var i = 0; i < 9; i++){
-			document.append(document.createElement('div'));
-		}
-	</script>
 </head>
 <body>
-	<div style="width: 500px; border-radius: 50%; background-color:red; height: 500px; margin: 5% auto;"></div>
+	<div style="width: 500px; border-radius: 50%; background-color:red; height: 500px; margin: 6% auto; padding: 1.5% 0 0 1.5%;">
+		<div style="width: 480px; border-radius: 50%; background-color:white; height: 480px;"></div>	
+	</div>
+	<script>
+		for(var i = 0; i < 20; i++){
+			var theta = ((Math.PI * 2) / 20) * i;
+			var x = 630 + (Math.cos(theta) * 280);
+			var y = 320 - (Math.sin(theta) * 280);
+			//console.log('X: ' + x + ' Y: ' + y);
+			document.body.innerHTML += '<div style="position: absolute; top:' + y + 'px; left:' + x + 'px; font-size: 31px;">1</div>';
+		}
+	</script>
 </body>
 </html>
