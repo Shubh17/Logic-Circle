@@ -42,6 +42,12 @@
 		}
 		document.getElementById('ones').innerHTML = '1\'s: ' + ones;
 		document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
+
+		setInterval(function(){
+			//make a loop through divs and making the div inbtween both the correct value of its neighbors and making it visible
+			document.getElementById('ones').innerHTML = '1\'s: ' + ones;
+			document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
+		}, 1000);
 	</script>
 </body>
 </html>
