@@ -6,14 +6,42 @@
 	<div style="width: 500px; border-radius: 50%; background-color:red; height: 500px; margin: 6% auto; padding: 1.5% 0 0 1.5%;">
 		<div style="width: 480px; border-radius: 50%; background-color:white; height: 480px;"></div>	
 	</div>
+	<div id="ones" style="position: absolute; top: 5%; left: 5%; font-size: 25px;">1's: 4</div>
+	<div id="zeros" style="position: absolute; top: 5%; left: 90%; font-size: 25px;">0's: 5</div>
 	<script>
-		for(var i = 0; i < 20; i++){
-			var theta = ((Math.PI * 2) / 20) * i;
+		var zeros = 0;
+		var ones = 0;
+		var even = 0;//will be turned to one on the loop
+		for(var i = 0; i < 18; i++){
+			var theta = ((Math.PI * 2) / 18) * i;
 			var x = 630 + (Math.cos(theta) * 280);
 			var y = 320 - (Math.sin(theta) * 280);
+			var vis = i % 2 == even ? 'visible' : 'hidden';
+			var value;
+			if(i % 2 != even){
+				value = '';
+			}else{
+				if(zeros > 4){
+					value = '1';	
+					ones++;
+				}else if(ones > 3){
+					value = '0';
+					zeros++;
+				}else{
+					if(Math.random() < 0.5){
+						value = '1';
+						ones++;
+					}else{
+						value = '0';
+						zeros++;
+					}
+				}
+			}
 			//console.log('X: ' + x + ' Y: ' + y);
-			document.body.innerHTML += '<div style="position: absolute; top:' + y + 'px; left:' + x + 'px; font-size: 31px;">1</div>';
+			document.body.innerHTML += '<div style="visibility: ' + vis + ';position: absolute; top:' + y + 'px; left:' + x + 'px; font-size: 31px;">' + value + '</div>';
 		}
+		document.getElementById('ones').innerHTML = '1\'s: ' + ones;
+		document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
 	</script>
 </body>
 </html>
