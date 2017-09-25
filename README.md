@@ -8,4 +8,6 @@ We were then asked to determine if the circle would ever become a circle of all 
 
 Given this program would cause an infinite loop we had to make it, especially during class. We had 4 mins to finish it by the end of class to little avail. See the first commit for our meager 4-minute coding results. <br><br>
 
+[Demo found here](http://rawgit.com/shubh17/Logic-Circle/master/test.html) <br><br>
+
 Enjoy. 
