@@ -8,9 +8,11 @@
 	</div>
 	<div id="ones" style="position: absolute; top: 5%; left: 5%; font-size: 25px;">1's: 4</div>
 	<div id="zeros" style="position: absolute; top: 5%; left: 90%; font-size: 25px;">0's: 5</div>
+	<div id="maxOnes" style="position: absolute; top: 93%; left: 2%; font-size: 25px;">Max Ones: 0</div>
+	<div id="maxZeros" style="position: absolute; top: 93%; left: 87%; font-size: 25px;">Max Zeros: 0</div>
 	<script>
-		var zeros = 0;
-		var ones = 0;
+		var zeros = 0, maxZeros = 0;
+		var ones = 0, maxOnes = 0;
 		var even = 0;//will be turned to one on the loop
 		for(var i = 0; i < 18; i++){
 			var theta = ((Math.PI * 2) / 18) * i;
@@ -70,9 +72,13 @@
 					divs[i].style.visibility = 'hidden';
 				}
 				//console.log(divs[i].style.visibility);
-				document.getElementById('ones').innerHTML = '1\'s: ' + ones;
-				document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
 			}
+			if(ones > maxOnes){maxOnes = ones;}
+			if(zeros > maxZeros){maxZeros = zeros;}	
+			document.getElementById('ones').innerHTML = '1\'s: ' + ones;
+			document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
+			document.getElementById('maxOnes').innerHTML = 'Max Ones: ' + maxOnes;
+			document.getElementById('maxZeros').innerHTML = 'Max Zeros: ' + maxZeros;
 		}, 250);
 	</script>
 </body>
