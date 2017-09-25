@@ -38,16 +38,42 @@
 				}
 			}
 			//console.log('X: ' + x + ' Y: ' + y);
-			document.body.innerHTML += '<div style="visibility: ' + vis + ';position: absolute; top:' + y + 'px; left:' + x + 'px; font-size: 31px;">' + value + '</div>';
+			document.body.innerHTML += '<div class="zeroOrOne" style="visibility: ' + vis + ';position: absolute; top:' + y 
+																+ 'px; left:' + x + 'px; font-size: 31px;">' + value + '</div>';
 		}
 		document.getElementById('ones').innerHTML = '1\'s: ' + ones;
 		document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
 
 		setInterval(function(){
+			zeros = 0;
+			ones = 0;
 			//make a loop through divs and making the div inbtween both the correct value of its neighbors and making it visible
-			document.getElementById('ones').innerHTML = '1\'s: ' + ones;
-			document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
-		}, 1000);
+			var divs = document.getElementsByClassName('zeroOrOne');
+			for(var i = 0; i < divs.length; i++){
+				if(divs[i].style.visibility == 'hidden'){
+					//do something
+					var leftNeighbor = i - 1;
+					var rightNeighbor = i + 1;
+					if(leftNeighbor < 0){
+						leftNeighbor += divs.length;
+					}else if(rightNeighbor >= divs.length){
+						rightNeighbor -= divs.length;
+					}
+					divs[i].innerHTML = ((parseInt(divs[leftNeighbor].innerHTML) + parseInt(divs[rightNeighbor].innerHTML)) % 2) + '';
+					if(parseInt(divs[i].innerHTML) == 1){
+						ones++;
+					}else{
+						zeros++;
+					}
+					divs[i].style.visibility = 'visible';
+				}else{
+					divs[i].style.visibility = 'hidden';
+				}
+				//console.log(divs[i].style.visibility);
+				document.getElementById('ones').innerHTML = '1\'s: ' + ones;
+				document.getElementById('zeros').innerHTML = '0\'s: ' + zeros;
+			}
+		}, 250);
 	</script>
 </body>
 </html>
